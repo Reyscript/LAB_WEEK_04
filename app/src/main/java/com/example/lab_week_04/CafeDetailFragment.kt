@@ -7,14 +7,16 @@ import android.view.LayoutInflater
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 
+private const val TAB_CONTENT = "TAB_CONTENT"
+
 class CafeDetailFragment : Fragment() {
-    private val cafeTitle: TextView?
-        get() = view?.findViewById(R.id.cafe_title)
-    private val cafeDesc: TextView?
-        get() = view?.findViewById(R.id.cafe_desc)
+    private var content: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        arguments?.let {
+            content = it.getString(TAB_CONTENT)
+        }
     }
 
     override fun onCreateView(
@@ -26,32 +28,15 @@ class CafeDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val position = arguments?.getInt("position", 0) ?: 0
-
-        when (position) {
-            0 -> {
-                cafeTitle?.text = getString(R.string.starbucks_title)
-                cafeDesc?.text = "Starbucks adalah jaringan kedai kopi internasional yang didirikan di Seattle, Washington. Mereka menawarkan berbagai macam kopi, teh, dan makanan ringan."
-            }
-            1 -> {
-                cafeTitle?.text = getString(R.string.janjijiwa_title)
-                cafeDesc?.text = "Janji Jiwa adalah brand kopi asli Indonesia yang menyajikan kopi dengan kualitas premium namun dengan harga yang terjangkau."
-            }
-            2 -> {
-                cafeTitle?.text = getString(R.string.kopikenangan_title)
-                cafeDesc?.text = "Kopi Kenangan adalah jaringan coffee shop Indonesia yang menyajikan kopi berkualitas dengan rasa yang khas dan memorable."
-            }
-        }
+        view.findViewById<TextView>(R.id.content_description)?.text = content
     }
 
     companion object {
-        fun newInstance(position: Int): CafeDetailFragment {
-            val fragment = CafeDetailFragment()
-            val args = Bundle()
-            args.putInt("position", position)
-            fragment.arguments = args
-            return fragment
-        }
+        fun newInstance(content: String) =
+            CafeDetailFragment().apply {
+                arguments = Bundle().apply {
+                    putString(TAB_CONTENT, content)
+                }
+            }
     }
 }

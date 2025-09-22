@@ -1,23 +1,23 @@
 package com.example.lab_week_04
 
+import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-val TABS_FIXED = listOf(
-    R.string.starbucks_title,
-    R.string.janjijiwa_title,
-    R.string.kopikenangan_title,
-)
-
 class CafeAdapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {
 
-    override fun getItemCount(): Int {
-        return TABS_FIXED.size
-    }
+    private val context: Context = fragmentActivity
+
+    override fun getItemCount(): Int = 3
 
     override fun createFragment(position: Int): Fragment {
-        return CafeDetailFragment.newInstance(position)
+        return when (position) {
+            0 -> CafeDetailFragment.newInstance(content = context.getString(R.string.starbucks_desc))
+            1 -> CafeDetailFragment.newInstance(content = context.getString(R.string.janjijiwa_desc))
+            2 -> CafeDetailFragment.newInstance(content = context.getString(R.string.kopikenangan_desc))
+            else -> CafeDetailFragment.newInstance(content = "")
+        }
     }
 }
