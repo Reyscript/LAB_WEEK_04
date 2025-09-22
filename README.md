@@ -9,6 +9,7 @@ Images & Screenshots: https://drive.google.com/drive/u/5/folders/1pjHD0qTkddklMa
 APK File: https://drive.google.com/drive/u/5/folders/15b6q4WZY5u6OWqoaI0opdTp9yutPb5Lr
 
 Commit History
+
 Commit No. 1 - Navigation drawer  
 Commit No. 2 - Bottom Navigation  
 Commit No. 3 - Tabbed Navigation  
@@ -48,6 +49,7 @@ At Kopi Kenangan, their dream is to serve high quality coffee, made with the fre
 - CafeDetailFragment - Fragment untuk menampilkan detail kafe
 
  Cara Penggunaan
+ 
 1. Navigation Drawer: Geser dari kiri untuk mengakses menu navigasi
 2. Bottom Navigation: Gunakan bottom bar untuk berpindah antara "Coffee" dan "Cafe"
 3. Tab Navigation: Pada halaman Cafe, gunakan tab untuk berpindah antara Starbucks, Janji Jiwa, dan Kopi Kenangan
